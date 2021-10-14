@@ -71,12 +71,14 @@
 <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">Eshop</span>
+        <span class="fs-4"><img src="http://simpleicon.com/wp-content/uploads/apple.png" width="50" height="50"></span>
       </a>
       <div class="col-sm-3 col-md-3 me-5">
-        <form class="navbar-form justify-content-center" role="search">
+        <div data-aos="fade-down-right">
+        <form method="POST" action="{% url 'search' %}" class="navbar-form justify-content-center" role="search">
+          {% csrf_token %}
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
+            <input type="text" class="form-control" placeholder="Search" name="searched_product">
             <div class="input-group-btn">
                 <button class="btn btn-primary" type="submit">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -86,7 +88,10 @@
             </div>
         </div>
         </form>
+      </div>
+        
     </div>
+    <div data-aos="fade-up">
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="{% url 'homepage' %}" class="nav-link active" aria-current="page">Главное</a></li>
         <!-- <li class="nav-item"><a href="#" class="nav-link">Order</a></li> -->
@@ -99,6 +104,7 @@
         <li class="nav-item"><a href="{% url 'register' %}" class="nav-link">Зарегистрироваться</a></li>
         {% endif %}
       </ul>
+      </div>
     </header>
 
 </div>
@@ -155,5 +161,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" > </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" > </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" > </script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
   </body>
 </html>
